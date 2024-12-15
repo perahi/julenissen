@@ -21,7 +21,7 @@
       emailjs.send('service_punn28s', 'template_mtqskbz', templateParams).then(
         (response) => {
           console.log('SUCCESS!', response.status, response.text);
-          alert("E-posten er sendt!");
+          alert("Takk for at du hjalp nissen!");
         },
         (error) => {
           console.log('FAILED...', error);
@@ -64,10 +64,11 @@
 </head>
 <body>
 
-  <h3>Mangler informasjon</h3>
+  <h3>Mangler informasjon til julegaven</h3>
   <img src="julenissen.jpeg" alt="Julenissen eller julensisen?">
-  <p>Vi mangler informasjon om hva du har kjøpt i julegave til Per Axel Hisdal. 
-    Du må sende dette innen 12 timer, ellers vil ikke julenissen komme på besøk til deg og dine i år.</p>
+  <h5>Venligst oppgi hva du har kjøpt til Per Axel til jul og trykk deretter send.</h5>
+  <p>Takk for at du hjelper nissen!</p>
+
 
   <!-- Skjema for å sende e-posten -->
   <label for="melding">Skriv inn informasjon:</label><br>
