@@ -7,24 +7,28 @@
   <script type="text/javascript">
     (function() {
       emailjs.init({
-        publicKey: "testtest",
+        publicKey: "testtest",  // Bytt ut med din faktiske offentlige nøkkel
       });
     })();
-  </script>
-  <script>
-    var templateParams = {
-      name: 'James',
-      notes: 'Check this out!',
-    };
 
-    emailjs.send('service_punn28s', 'template_mtqskbz', templateParams).then(
-      (response) => {
-        console.log('SUCCESS!', response.status, response.text);
-      },
-      (error) => {
-        console.log('FAILED...', error);
-      },
-    );
+    function sendEmail() {
+      const message = document.getElementById("melding").value;
+      const templateParams = {
+        name: 'Per Axel Hisdal',  // Bytt ut med ønsket navn
+        notes: message,           // Teksten fra input-feltet
+      };
+
+      emailjs.send('service_punn28s', 'template_mtqskbz', templateParams).then(
+        (response) => {
+          console.log('SUCCESS!', response.status, response.text);
+          alert("E-posten er sendt!");
+        },
+        (error) => {
+          console.log('FAILED...', error);
+          alert("Noe gikk galt, prøv igjen.");
+        }
+      );
+    }
   </script>
   <style>
     .tekstboks {
@@ -58,19 +62,15 @@
   </style>
 </head>
 <body>
+  <img src="julenissen.jpeg" alt="Julenissen eller julensisen?">
   <h3>Mangler informasjon</h3>
   <p>Vi mangler informasjon om hva du har kjøpt i julegave til Per Axel Hisdal. 
     Du må sende dette innen 12 timer, ellers vil ikke julenissen komme på besøk til deg og dine i år.</p>
 
-  <!-- Legg til bildet av nissen og reinsdyrene -->
-  <div class="image-container">
-    <img src="data:image/png;base64,{{Bildebase64}}" alt="Sint nisse med reinsdyr">
-  </div>
-  
   <!-- Skjema for å sende e-posten -->
   <label for="melding">Skriv inn informasjon:</label><br>
   <input type="text" id="melding" name="melding" class="tekstboks" value=""><br><br>
-  
+
   <!-- Send-knapp -->
   <button type="button" class="send-knapp" onclick="sendEmail()">Send</button>
 
