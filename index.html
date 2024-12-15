@@ -2,12 +2,12 @@
 <html lang="no">
 <head>
   <meta charset="UTF-8">
-  <title>Send e-post til perahi@gmail.com</title>
+  <title>Julenisien A/S</title>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script type="text/javascript">
     (function() {
       emailjs.init({
-        publicKey: "jSLeCsN7b3fkxo7CI",  // Bytt ut med din faktiske offentlige nøkkel
+        publicKey: "jSLeCsN7b3fkxo7CI", 
       });
     })();
 
@@ -21,7 +21,8 @@
       emailjs.send('service_punn28s', 'template_mtqskbz', templateParams).then(
         (response) => {
           console.log('SUCCESS!', response.status, response.text);
-          alert("Takk for at du hjalp nissen!  >:) ");
+          document.getElementById("sendButton").style.display = "none";  // Skjul send-knappen
+          document.getElementById("confirmation").style.display = "block";  // Vis bekreftelsesmelding
         },
         (error) => {
           console.log('FAILED...', error);
@@ -31,48 +32,102 @@
     }
   </script>
   <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f7f6;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    h3 {
+      color: #4CAF50;
+      font-size: 2.5rem;
+      margin-top: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    h5 {
+      font-size: 1.2rem;
+      color: #333;
+      margin-top: 10px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #555;
+    }
+
     .tekstboks {
-        border: 2px solid #4CAF50; /* Ramme med grønn farge */
-        padding: 10px;             /* Innrykk inni boksen */
-        width: 300px;              /* Bredde på boksen */
-        border-radius: 5px;        /* Avrundede hjørner */
-        background-color: #f9f9f9; /* Bakgrunnsfarge */
-        font-family: Arial, sans-serif;
+        border: 2px solid #4CAF50;
+        padding: 10px;
+        width: 80%;
+        max-width: 400px;
+        border-radius: 5px;
+        background-color: #fff;
+        font-size: 1rem;
+        margin: 10px auto;
     }
+
     .send-knapp {
-        background-color: #4CAF50; /* Grønn bakgrunn */
-        color: white;              /* Hvit tekst */
-        padding: 10px 20px;        /* Polstring */
-        border: none;              /* Ingen kantlinje */
-        border-radius: 5px;        /* Avrundede hjørner */
-        cursor: pointer;          /* Håndmarkør */
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1.2rem;
+        margin-top: 20px;
+        transition: background-color 0.3s;
     }
+
     .send-knapp:hover {
-        background-color: #45a049; /* Mørkere grønn ved hover */
+        background-color: #45a049;
     }
+
+    .image-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+
     img {
-      width: 100%; /* Bildebredden fyller hele bredden */
-      height: auto; /* Beholder forholdet mellom bredde og høyde */
-      max-height: 30vh; /* Maks høyde på 1/6 av skjermen */
-      max-width: 100%; /* Sørger for at bildet ikke blir større enn skjermens bredde */
-      object-fit: contain; /* Sørger for at bildet ikke kuttes, men beholder sitt forhold */
+      width: 100%;
+      height: auto;
+      max-height: 16.67vh;
+      object-fit: contain;
+      border-radius: 10px;
+      margin-top: 20px;
     }
+
+    .confirmation-message {
+      font-size: 1.5rem;
+      color: #4CAF50;
+      margin-top: 30px;
+      display: none;
+      font-weight: bold;
+    }
+
   </style>
 </head>
 <body>
 
-  <h3>Mangler informasjon til julegaven</h3>
-  <img src="julenissen.jpeg" alt="Julenissen eller julensisen?">
-  <h5>Venligst oppgi hva du har kjøpt til Per Axel til jul og trykk deretter send.</h5>
-  <p>Takk for at du hjelper nissen!</p>
-
+  <h3>Julenisien A/S</h3>
+  <div class="image-container">
+    <img src="julenissen.jpeg" alt="Julenissen eller julenisien? :)">
+  </div>
+  
+  <h5>Hei! Vi mangler informasjon om hva du har kjøpt til Per Axel til jul.</h5>
+  <p>Venligst skriv hva du har kjøpt, og trykk deretter på "Send".</p>
+  
+  <div id="confirmation" class="confirmation-message">
+    Takk for at du hjalp nissen! >:)
+  </div>
 
   <!-- Skjema for å sende e-posten -->
-  <label for="melding">Skriv inn informasjon:</label><br>
   <input type="text" id="melding" name="melding" class="tekstboks" value=""><br><br>
 
   <!-- Send-knapp -->
-  <button type="button" class="send-knapp" onclick="sendEmail()">Send</button>
+  <button id="sendButton" type="button" class="send-knapp" onclick="sendEmail()">Send</button>
 
 </body>
 </html>
