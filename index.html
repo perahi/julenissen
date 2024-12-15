@@ -55,9 +55,10 @@
         margin: 20px 0;
     }
     img {
-        width: 60%;
-        border: 2px solid #4CAF50;
-        border-radius: 10px;
+      width: 100%; /* Bildebredden fyller hele bredden */
+      height: auto; /* Beholder forholdet mellom bredde og høyde */
+      max-height: 16.67vh; /* Maks høyde på 1/6 av skjermen */
+      object-fit: cover; /* Sørger for at bildet dekker området uten å bli forvrengt */
     }
   </style>
 </head>
