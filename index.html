@@ -13,7 +13,7 @@
 
     function sendEmail() {
   const message = document.getElementById("melding").value; // Hent verdien fra tekstboksen
-
+ 
   // Sjekk om tekstboksen er tom
   if (!message.trim()) {
     alert("Vennligst skriv noe i tekstboksen før du sender!");
@@ -21,8 +21,8 @@
   }
 
   const templateParams = {
-    name: 'Avsender',    // Eventuelt kan du la brukeren skrive navn også
-    notes: message,      // Inkluder teksten fra input-feltet
+    from_name: 'Avsender',    // Eventuelt kan du la brukeren skrive navn også
+    melding: message,      // Inkluder teksten fra input-feltet
   };
 
   emailjs.send('service_punn28s', 'template_mtqskbz', templateParams).then(
@@ -123,7 +123,6 @@
     <img src="julenissen.jpeg" alt="Julenissen eller julenisien? :)">
   </div>
   
-  <h5>Hei! Vi mangler informasjon om hva du har kjøpt til Per Axel til jul.</h5>
   <p>Venligst skriv hva du har kjøpt, og trykk deretter på "Send".</p>
   
   <div id="confirmation" class="confirmation-message">
