@@ -3,30 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <title>Send e-post til perahi@gmail.com</title>
-  <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-</script>
-<script type="text/javascript">
-   (function(){
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function() {
       emailjs.init({
-        publicKey: "jSLeCsN7b3fkxo7CI",
+        publicKey: "testtest",
       });
-   })();
-</script>
+    })();
+  </script>
   <script>
- var templateParams = {
-  name: 'James',
-  notes: 'Check this out!',
-};
+    var templateParams = {
+      name: 'James',
+      notes: 'Check this out!',
+    };
 
-emailjs.send('service_punn28s', 'template_mtqskbz', templateParams).then(
-  (response) => {
-    console.log('SUCCESS!', response.status, response.text);
-  },
-  (error) => {
-    console.log('FAILED...', error);
-  },
-);
+    emailjs.send('service_punn28s', 'template_mtqskbz', templateParams).then(
+      (response) => {
+        console.log('SUCCESS!', response.status, response.text);
+      },
+      (error) => {
+        console.log('FAILED...', error);
+      },
+    );
   </script>
   <style>
     .tekstboks {
@@ -48,12 +46,26 @@ emailjs.send('service_punn28s', 'template_mtqskbz', templateParams).then(
     .send-knapp:hover {
         background-color: #45a049; /* Mørkere grønn ved hover */
     }
+    .image-container {
+        text-align: center;
+        margin: 20px 0;
+    }
+    img {
+        width: 60%;
+        border: 2px solid #4CAF50;
+        border-radius: 10px;
+    }
   </style>
 </head>
 <body>
   <h3>Mangler informasjon</h3>
   <p>Vi mangler informasjon om hva du har kjøpt i julegave til Per Axel Hisdal. 
     Du må sende dette innen 12 timer, ellers vil ikke julenissen komme på besøk til deg og dine i år.</p>
+
+  <!-- Legg til bildet av nissen og reinsdyrene -->
+  <div class="image-container">
+    <img src="data:image/png;base64,{{Bildebase64}}" alt="Sint nisse med reinsdyr">
+  </div>
   
   <!-- Skjema for å sende e-posten -->
   <label for="melding">Skriv inn informasjon:</label><br>
