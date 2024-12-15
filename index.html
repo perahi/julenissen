@@ -5,19 +5,21 @@
   <title>Send e-post til perahi@gmail.com</title>
   <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script>
+    // Initialiser EmailJS med din User ID
     (function() {
-      emailjs.init("jSLeCsN7b3fkxo7CI"); // Erstatt med din EmailJS User ID
+      emailjs.init("jSLeCsN7b3fkxo7CI");  // Erstatt med din User ID
     })();
 
     function sendEmail() {
       const tekst = document.getElementById("melding").value;
       
-      // Send e-posten via EmailJS
+      // Parametre for e-posten
       const templateParams = {
-        to_email: 'perahi@gmail.com',   // Mottakerens e-postadresse
+        to_email: 'perahi@gmail.com',  // Mottakerens e-postadresse
         message: tekst                  // Meldingen som skal sendes
       };
 
+      // Send e-posten via EmailJS
       emailjs.send('service_punn28s', 'template_mtqskbz', templateParams)
         .then(function(response) {
            alert('E-posten ble sendt!');
