@@ -12,24 +12,31 @@
     })();
 
     function sendEmail() {
-      const message = document.getElementById("melding").value;
-      const templateParams = {
-        name: 'test',  // Bytt ut med ønsket navn
-        notes: message,           // Teksten fra input-feltet
-      };
+  const message = document.getElementById("melding").value; // Hent verdien fra tekstboksen
 
-      emailjs.send('service_punn28s', 'template_mtqskbz', templateParams).then(
-        (response) => {
-          console.log('SUCCESS!', response.status, response.text);
-          document.getElementById("sendButton").style.display = "none";  // Skjul send-knappen
-          document.getElementById("confirmation").style.display = "block";  // Vis bekreftelsesmelding
-        },
-        (error) => {
-          console.log('FAILED...', error);
-          alert("Noe gikk galt, prøv igjen.");
-        }
-      );
+  // Sjekk om tekstboksen er tom
+  if (!message.trim()) {
+    alert("Vennligst skriv noe i tekstboksen før du sender!");
+    return;
+  }
+
+  const templateParams = {
+    name: 'Avsender',    // Eventuelt kan du la brukeren skrive navn også
+    notes: message,      // Inkluder teksten fra input-feltet
+  };
+
+  emailjs.send('service_punn28s', 'template_mtqskbz', templateParams).then(
+    (response) => {
+      console.log('SUCCESS!', response.status, response.text);
+      document.getElementById("sendButton").style.display = "none";  // Skjul send-knappen
+      document.getElementById("confirmation").style.display = "block";  // Vis bekreftelsesmelding
+    },
+    (error) => {
+      console.log('FAILED...', error);
+      alert("Noe gikk galt, prøv igjen.");
     }
+  );
+}
   </script>
   <style>
     body {
