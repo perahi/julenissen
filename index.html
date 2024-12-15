@@ -21,8 +21,8 @@
   }
 
   const templateParams = {
-    from_name: message.text,    // Eventuelt kan du la brukeren skrive navn også
-    melding: message,      // Inkluder teksten fra input-feltet
+    from_name: message,    // Eventuelt kan du la brukeren skrive navn også
+    melding: document.getElementById("melding").value,      // Inkluder teksten fra input-feltet
   };
 
   emailjs.send('service_punn28s', 'template_mtqskbz', templateParams).then(
