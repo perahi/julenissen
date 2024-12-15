@@ -3,32 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <title>Send e-post til perahi@gmail.com</title>
-  <style>
-    /* Stil på tekstboksen */
-    .tekstboks {
-        border: 2px solid #4CAF50;  /* Grønn ramme */
-        padding: 10px;              /* Innrykk inni boksen */
-        width: 300px;               /* Bredde på boksen */
-        border-radius: 5px;         /* Avrundede hjørner */
-        background-color: #f9f9f9;  /* Lys bakgrunn */
-        font-family: Arial, sans-serif;
-        font-size: 14px;            /* Fontstørrelse */
-    }
-    
-    /* Stil på knappen */
-    .send-knapp {
-        background-color: #4CAF50;  /* Grønn bakgrunn */
-        color: white;               /* Hvit tekst */
-        border: none;               /* Ingen kantlinje */
-        padding: 10px 20px;         /* Polstring */
-        text-align: center;         /* Sentrert tekst */
-        font-size: 16px;            /* Fontstørrelse */
-        border-radius: 5px;         /* Avrundede hjørner */
-        cursor: pointer;           /* Håndmarkør */
-    }
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    (function() {
+      emailjs.init("YOUR_USER_ID"); // Erstatt med din EmailJS User ID
+    })();
 
+    function sendEmail() {
+      const tekst = document.getElementById("melding").value;
+      
+      // Send e-posten via EmailJS
+      const templateParams = {
+        to_email: 'perahi@gmail.com',   // Mottakerens e-postadresse
+        message: tekst                  // Meldingen som skal sendes
+      };
+
+      emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+        .then(function(response) {
+           alert('E-posten ble sendt!');
+        }, function(error) {
+           alert('Feil ved sending av e-post: ' + JSON.stringify(error));
+        });
+    }
+  </script>
+  <style>
+    .tekstboks {
+        border: 2px solid #4CAF50; /* Ramme med grønn farge */
+        padding: 10px;             /* Innrykk inni boksen */
+        width: 300px;              /* Bredde på boksen */
+        border-radius: 5px;        /* Avrundede hjørner */
+        background-color: #f9f9f9; /* Bakgrunnsfarge */
+        font-family: Arial, sans-serif;
+    }
+    .send-knapp {
+        background-color: #4CAF50; /* Grønn bakgrunn */
+        color: white;              /* Hvit tekst */
+        padding: 10px 20px;        /* Polstring */
+        border: none;              /* Ingen kantlinje */
+        border-radius: 5px;        /* Avrundede hjørner */
+        cursor: pointer;          /* Håndmarkør */
+    }
     .send-knapp:hover {
-        background-color: #45a049;  /* Mørkere grønn ved hover */
+        background-color: #45a049; /* Mørkere grønn ved hover */
     }
   </style>
 </head>
@@ -38,13 +54,11 @@
     Du må sende dette innen 12 timer, ellers vil ikke julenissen komme på besøk til deg og dine i år.</p>
   
   <!-- Skjema for å sende e-posten -->
-  <form action="mailto:perahi@gmail.com" method="get">
-    <label for="melding">Skriv inn informasjon:</label><br>
-    <input type="text" id="melding" name="melding" class="tekstboks" value=""><br><br>
-    
-    <!-- Send-knapp -->
-    <input type="submit" value="Send" class="send-knapp">
-  </form>
+  <label for="melding">Skriv inn informasjon:</label><br>
+  <input type="text" id="melding" name="melding" class="tekstboks" value=""><br><br>
+  
+  <!-- Send-knapp -->
+  <button type="button" class="send-knapp" onclick="sendEmail()">Send</button>
 
 </body>
 </html>
