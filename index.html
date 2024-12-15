@@ -21,7 +21,7 @@
       emailjs.send('service_punn28s', 'template_mtqskbz', templateParams).then(
         (response) => {
           console.log('SUCCESS!', response.status, response.text);
-          alert("Takk for at du hjalp nissen!");
+          alert("Takk for at du hjalp nissen!  >:) ");
         },
         (error) => {
           console.log('FAILED...', error);
@@ -50,14 +50,11 @@
     .send-knapp:hover {
         background-color: #45a049; /* Mørkere grønn ved hover */
     }
-    .image-container {
-        text-align: center;
-        margin: 20px 0;
-    }
     img {
       width: 100%; /* Bildebredden fyller hele bredden */
       height: auto; /* Beholder forholdet mellom bredde og høyde */
-      max-height: 16.67vh; /* Maks høyde på 1/6 av skjermen */
+      max-height: 30vh; /* Maks høyde på 1/6 av skjermen */
+      max-width: 100%; /* Sørger for at bildet ikke blir større enn skjermens bredde */
       object-fit: contain; /* Sørger for at bildet ikke kuttes, men beholder sitt forhold */
     }
   </style>
