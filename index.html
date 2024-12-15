@@ -3,13 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <title>Send e-post til perahi@gmail.com</title>
-  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "jSLeCsN7b3fkxo7CI",
+      });
+   })();
+</script>
   <script>
-    // Initialiser EmailJS med din User ID
-    (function() {
-      emailjs.init("jSLeCsN7b3fkxo7CI");  // Erstatt med din User ID
-    })();
-
+ 
     function sendEmail() {
       const tekst = document.getElementById("melding").value;
       
