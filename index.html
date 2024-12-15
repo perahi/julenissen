@@ -14,24 +14,19 @@
    })();
 </script>
   <script>
- 
-    function sendEmail() {
-      const tekst = document.getElementById("melding").value;
-      
-      // Parametre for e-posten
-      const templateParams = {
-        to_email: 'perahi@gmail.com',  // Mottakerens e-postadresse
-        message: tekst                  // Meldingen som skal sendes
-      };
+ var templateParams = {
+  name: 'James',
+  notes: 'Check this out!',
+};
 
-      // Send e-posten via EmailJS
-      emailjs.send('service_punn28s', 'template_mtqskbz', templateParams)
-        .then(function(response) {
-           alert('E-posten ble sendt!');
-        }, function(error) {
-           alert('Feil ved sending av e-post: ' + JSON.stringify(error));
-        });
-    }
+emailjs.send('service_punn28s', 'template_mtqskbz', templateParams).then(
+  (response) => {
+    console.log('SUCCESS!', response.status, response.text);
+  },
+  (error) => {
+    console.log('FAILED...', error);
+  },
+);
   </script>
   <style>
     .tekstboks {
